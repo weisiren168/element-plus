@@ -18,7 +18,7 @@ const _mount = (template: string, data = () => ({}), otherObj?) =>
   mount(
     {
       components: {
-        'el-date-picker': DatePicker,
+        'el-date-picker-utc': DatePicker,
         'el-form-item': ElFormItem,
       },
       template,
@@ -37,7 +37,7 @@ afterEach(() => {
 const testDatePickerPanelChange = async (type: 'date' | 'daterange') => {
   let mode
   const wrapper = _mount(
-    `<el-date-picker
+    `<el-date-picker-utc
         type="${type}"
         v-model="value"
         @panel-change="onPanelChange"
@@ -86,7 +86,7 @@ describe('DatePicker', () => {
     const popperClassName = 'popper-class-test'
     const customClassName = 'custom-class-test'
     const wrapper = _mount(
-      `<el-date-picker
+      `<el-date-picker-utc
         :readonly="true"
         placeholder='test_'
         format='HH-mm-ss'
@@ -114,7 +114,7 @@ describe('DatePicker', () => {
 
   it('select date', async () => {
     const wrapper = _mount(
-      `<el-date-picker
+      `<el-date-picker-utc
         v-model="value"
     />`,
       () => ({ value: '' })
@@ -157,7 +157,7 @@ describe('DatePicker', () => {
 
   it('defaultTime and clear value', async () => {
     const wrapper = _mount(
-      `<el-date-picker
+      `<el-date-picker-utc
         v-model="value"
         :default-time="new Date(2011,1,1,12,0,1)"
     />`,
@@ -183,7 +183,7 @@ describe('DatePicker', () => {
 
   it('defaultValue', async () => {
     const wrapper = _mount(
-      `<el-date-picker
+      `<el-date-picker-utc
         v-model="value"
         :default-value="defaultValue"
     />`,
@@ -228,7 +228,7 @@ describe('DatePicker', () => {
     const keydownHandler = vi.fn()
     let onChangeValue: Date | undefined
     const wrapper = _mount(
-      `<el-date-picker
+      `<el-date-picker-utc
         v-model="value"
         @change="onChange"
         @focus="onFocus"
@@ -276,7 +276,7 @@ describe('DatePicker', () => {
   it('emits focus on click when not currently focused', async () => {
     const focusHandler = vi.fn()
     const wrapper = _mount(
-      `<el-date-picker
+      `<el-date-picker-utc
         v-model="value"
         @focus="onFocus"
       />`,
@@ -300,7 +300,7 @@ describe('DatePicker', () => {
 
   it('opens popper on click when input is focused', async () => {
     const wrapper = _mount(
-      `<el-date-picker
+      `el-date-picker-utc
         v-model="value"
         @focus="onFocus"
       />`,
@@ -322,7 +322,7 @@ describe('DatePicker', () => {
     const value = new Date(Date.now() - 86400000)
     value.setHours(0, 0, 0, 0)
     const wrapper = _mount(
-      `<el-date-picker
+      `el-date-picker-utc
         v-model="value"
         :shortcuts="shortcuts"
     />`,
@@ -351,7 +351,7 @@ describe('DatePicker', () => {
 
   it('disabledDate', async () => {
     const wrapper = _mount(
-      `<el-date-picker
+      `el-date-picker-utc
         v-model="value"
         :disabledDate="disabledDate"
     />`,
@@ -371,7 +371,7 @@ describe('DatePicker', () => {
 
   it('ref focus', async () => {
     _mount(
-      `<el-date-picker
+      `el-date-picker-utc
         v-model="value"
         ref="input"
       />`,
@@ -391,7 +391,7 @@ describe('DatePicker', () => {
 
   it('custom content', async () => {
     const wrapper = _mount(
-      `<el-date-picker
+      `el-date-picker-utc
         v-model="value"
         ref="input">
         <template #default="{ isCurrent, text }">
@@ -399,7 +399,7 @@ describe('DatePicker', () => {
             <div>{{ text }}</div>
           </div>
         </template>
-      </el-date-picker>`,
+      </el-date-picker-utc>`,
       () => ({ value: '' }),
       {
         mounted() {
@@ -424,7 +424,7 @@ describe('DatePicker', () => {
 
   it('custom content comment', async () => {
     _mount(
-      `<el-date-picker
+      `el-date-picker-utc
         v-model="value"
         ref="input">
         <template #default="{ isCurrent, text }">
@@ -432,7 +432,7 @@ describe('DatePicker', () => {
             <div>{{ text + "csw" }}</div>
           </div> -->
         </template>
-      </el-date-picker>`,
+      </el-date-picker-utc>`,
       () => ({ value: '' }),
       {
         mounted() {
@@ -448,7 +448,7 @@ describe('DatePicker', () => {
 
   it('custom content value validate', async () => {
     _mount(
-      `<el-date-picker
+      `el-date-picker-utc
         v-model="value"
         ref="input">
         <template #default="{ isCurrent, text }">
@@ -456,7 +456,7 @@ describe('DatePicker', () => {
             <div>{{ text + "csw" }}</div>
           </div>
         </template>
-      </el-date-picker>`,
+      </el-date-picker-utc>`,
       () => ({ value: '' }),
       {
         mounted() {
@@ -472,11 +472,11 @@ describe('DatePicker', () => {
 
   it('custom content bail out slot compoent', async () => {
     _mount(
-      `<el-date-picker
+      `el-date-picker-utc
         v-model="value"
         ref="input">
         <slot name="testest"></slot>
-      </el-date-picker>`,
+      </el-date-picker-utc>`,
       () => ({ value: '' }),
       {
         mounted() {
@@ -498,7 +498,7 @@ describe('DatePicker', () => {
       const value = day.format(valueFormat)
       const wrapper = _mount(
         `
-        <el-date-picker
+        el-date-picker-utc
           ref="compo"
           v-model="value"
           type="date"
@@ -546,7 +546,7 @@ describe('DatePicker', () => {
       const value = Date.now()
       const wrapper = _mount(
         `
-        <el-date-picker
+        el-date-picker-utc
           ref="compo"
           v-model="value"
           type="date"
@@ -587,7 +587,7 @@ describe('DatePicker Navigation', () => {
 
   const initNavigationTest = async (value) => {
     const wrapper = _mount(
-      `<el-date-picker
+      `el-date-picker-utc
         v-model="value"
     />`,
       () => ({ value })
@@ -686,7 +686,7 @@ describe('DatePicker Navigation', () => {
 describe('MonthPicker', () => {
   it('basic', async () => {
     const wrapper = _mount(
-      `<el-date-picker
+      `el-date-picker-utc
     type='month'
     v-model="value"
   />`,
@@ -710,11 +710,11 @@ describe('MonthPicker', () => {
     const valueFormat = '[Element-Plus] YYYY.MM'
     const wrapper = _mount(
       `
-      <el-date-picker
+      el-date-picker-utc
         type="month"
         v-model="value"
         value-format="${valueFormat}"
-      ></el-date-picker>
+      ></el-date-picker-utc>
     `,
       () => ({ value: dayjs(new Date(2020, 7, 1)).format(valueFormat) })
     )
@@ -738,7 +738,7 @@ describe('MonthPicker', () => {
 describe('YearPicker', () => {
   it('basic', async () => {
     const wrapper = _mount(
-      `<el-date-picker
+      `el-date-picker-utc
     type='year'
     v-model="value"
   />`,
@@ -776,11 +776,11 @@ describe('YearPicker', () => {
     const valueFormat = '[Element-Plus] YYYY'
     const wrapper = _mount(
       `
-      <el-date-picker
+      el-date-picker-utc
         type="year"
         v-model="value"
         value-format="${valueFormat}"
-      ></el-date-picker>
+      ></el-date-picker-utc>
     `,
       () => ({ value: dayjs(new Date(2005, 7, 1)).format(valueFormat) })
     )
@@ -804,7 +804,7 @@ describe('YearPicker', () => {
 describe('WeekPicker', () => {
   it('create', async () => {
     const wrapper = _mount(
-      `<el-date-picker
+      `el-date-picker-utc
     type='week'
     v-model="value"
   />`,
@@ -865,7 +865,7 @@ describe('WeekPicker', () => {
           },
           template: `
           <el-config-provider :locale="locale">
-            <el-date-picker
+            el-date-picker-utc
               type='week'
               v-model="value"
             />
@@ -906,7 +906,7 @@ describe('WeekPicker', () => {
 describe('DatePicker dates', () => {
   it('create', async () => {
     const wrapper = _mount(
-      `<el-date-picker
+      `el-date-picker-utc
     type='dates'
     v-model="value"
   />`,
@@ -941,7 +941,7 @@ describe('DatePicker dates', () => {
 describe('DatePicker keyboard events', () => {
   it('enter', async () => {
     const wrapper = _mount(
-      `<el-date-picker
+      `el-date-picker-utc
     type='date'
     v-model="value"
   />`,
@@ -966,7 +966,7 @@ describe('DatePicker keyboard events', () => {
 
   it('numpadEnter', async () => {
     const wrapper = _mount(
-      `<el-date-picker
+      `el-date-picker-utc
     type='date'
     v-model="value"
   />`,
@@ -997,7 +997,7 @@ describe('DateRangePicker', () => {
     const popperClassName = 'popper-class-test'
     const customClassName = 'custom-class-test'
     const wrapper = _mount(
-      `<el-date-picker
+      `el-date-picker-utc
         type='daterange'
         v-model="value"
         @calendarChange="onCalendarChange"
@@ -1060,7 +1060,7 @@ describe('DateRangePicker', () => {
 
   it('reverse selection', async () => {
     const wrapper = _mount(
-      `<el-date-picker
+      `el-date-picker-utc
       type='daterange'
       v-model="value"
     />`,
@@ -1092,7 +1092,7 @@ describe('DateRangePicker', () => {
 
   it('reset selection', async () => {
     const wrapper = _mount(
-      `<el-date-picker
+      `el-date-picker-utc
       type='daterange'
       v-model="value"
     />`,
@@ -1118,7 +1118,7 @@ describe('DateRangePicker', () => {
 
   it('range, start-date and end-date', async () => {
     _mount(
-      `<el-date-picker
+      `el-date-picker-utc
       type='daterange'
       v-model="value"
     />`,
@@ -1159,7 +1159,7 @@ describe('DateRangePicker', () => {
 
   it('unlink:true', async () => {
     const wrapper = _mount(
-      `<el-date-picker
+      `el-date-picker-utc
       type='daterange'
       v-model="value"
       unlink-panels
@@ -1190,7 +1190,7 @@ describe('DateRangePicker', () => {
     // The following test uses Australian Eastern Daylight Time (AEDT)
     // AEST -> AEDT shift happened on 2016-10-02 02:00:00
     const wrapper = _mount(
-      `<el-date-picker
+      `el-date-picker-utc
       type='daterange'
       v-model="value"
       unlink-panels
@@ -1213,7 +1213,7 @@ describe('DateRangePicker', () => {
     const valueFormat = 'DD/MM YYYY'
     const wrapper = _mount(
       `
-      <el-date-picker
+      el-date-picker-utc
         v-model="value"
         type="daterange"
         format="YYYY-MM-DD"
@@ -1251,7 +1251,7 @@ describe('DateRangePicker', () => {
   it('display value', async () => {
     const wrapper = _mount(
       `
-      <el-date-picker
+      el-date-picker-utc
         v-model="value"
         type="daterange"
     />`,
@@ -1271,7 +1271,7 @@ describe('DateRangePicker', () => {
 describe('MonthRange', () => {
   it('works', async () => {
     const wrapper = _mount(
-      `<el-date-picker
+      `el-date-picker-utc
       type='monthrange'
       v-model="value"
     />`,
@@ -1315,7 +1315,7 @@ describe('MonthRange', () => {
 
   it('range, start-date and end-date', async () => {
     _mount(
-      `<el-date-picker
+      `el-date-picker-utc
       type='monthrange'
       v-model="value"
     />`,
@@ -1354,7 +1354,7 @@ describe('MonthRange', () => {
 
   it('type:monthrange unlink:true', async () => {
     const wrapper = _mount(
-      `<el-date-picker
+      `el-date-picker-utc
       type='monthrange'
       v-model="value"
       unlink-panels
@@ -1381,7 +1381,7 @@ describe('MonthRange', () => {
 
   it('daylight saving time highlight', async () => {
     const wrapper = _mount(
-      `<el-date-picker
+      `el-date-picker-utc
       type='monthrange'
       v-model="value"
       unlink-panels
@@ -1404,7 +1404,7 @@ describe('MonthRange', () => {
       strategy: 'fixed',
     }
     const wrapper = _mount(
-      `<el-date-picker
+      `el-date-picker-utc
         type='monthrange'
         v-model="value"
         :popper-options="options"
@@ -1434,7 +1434,7 @@ describe('MonthRange', () => {
     it('automatic id attachment', async () => {
       const wrapper = _mount(
         `<el-form-item label="Foobar" data-test-ref="item">
-          <el-date-picker />
+          el-date-picker-utc />
         </el-form-item>`,
         () => ({})
       )
@@ -1452,7 +1452,7 @@ describe('MonthRange', () => {
     it('specified id attachment', async () => {
       const wrapper = _mount(
         `<el-form-item label="Foobar" data-test-ref="item">
-          <el-date-picker id="foobar" />
+          el-date-picker-utc id="foobar" />
         </el-form-item>`,
         () => ({})
       )
@@ -1471,8 +1471,8 @@ describe('MonthRange', () => {
     it('form item role is group when multiple inputs', async () => {
       const wrapper = _mount(
         `<el-form-item label="Foobar" data-test-ref="item">
-          <el-date-picker />
-          <el-date-picker />
+          el-date-picker-utc />
+          el-date-picker-utc />
         </el-form-item>`,
         () => ({})
       )
@@ -1486,7 +1486,7 @@ describe('MonthRange', () => {
   it('The year which is disabled should not be selectable', async () => {
     const pickHandler = vi.fn()
     const wrapper = _mount(
-      `<el-date-picker
+      `el-date-picker-utc
         v-model="yearValue"
         type="year"
         :disabled-date="validateYear"

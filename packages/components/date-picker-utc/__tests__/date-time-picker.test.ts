@@ -19,7 +19,7 @@ const _mount = (template: string, data = () => ({}), otherObj?) =>
   mount(
     {
       components: {
-        'el-date-picker': DatePicker,
+        'el-date-picker-utc': DatePicker,
         'el-form-item': ElFormItem,
       },
       template,
@@ -38,7 +38,7 @@ afterEach(() => {
 describe('Datetime Picker', () => {
   it('both picker show correct formated value (extract date-format and time-format from format property', async () => {
     const wrapper = _mount(
-      `<el-date-picker
+      `<el-date-picker-utc
         v-model="value"
         type="datetime"
         :format="format"
@@ -73,7 +73,7 @@ describe('Datetime Picker', () => {
 
   it('both picker show correct value', async () => {
     const wrapper = _mount(
-      `<el-date-picker
+      `<el-date-picker-utc
         v-model="value"
         type="datetime"
     />`,
@@ -120,7 +120,7 @@ describe('Datetime Picker', () => {
 
   it('click now button', async () => {
     const wrapper = _mount(
-      `<el-date-picker
+      `<el-date-picker-utc
         v-model="value"
         type="datetime"
     />`,
@@ -143,7 +143,7 @@ describe('Datetime Picker', () => {
 
   it('timepicker select && input time && input date', async () => {
     const wrapper = _mount(
-      `<el-date-picker
+      `<el-date-picker-utc
         v-model="value"
         type="datetime"
     />`,
@@ -195,7 +195,7 @@ describe('Datetime Picker', () => {
   it('now button: can not choose disabled date', async () => {
     let isDisable = true
     const wrapper = _mount(
-      `<el-date-picker
+      `<el-date-picker-utc
         v-model="value"
         type="datetime"
         :disabledDate="disabledDate"
@@ -228,7 +228,7 @@ describe('Datetime Picker', () => {
 
   it('confirm button honors picked date', async () => {
     const wrapper = _mount(
-      `<el-date-picker
+      `<el-date-picker-utc
         v-model="value"
         type="datetime"
     />`,
@@ -262,7 +262,7 @@ describe('Datetime Picker', () => {
       0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 23,
     ]
     const wrapper = _mount(
-      `<el-date-picker
+      `<el-date-picker-utc
         v-model="value"
         type="datetime"
         :disabledHours="disabledHours"
@@ -331,7 +331,7 @@ describe('Datetime Picker', () => {
 
   it('defaultTime takes effect when the type is datetime', async () => {
     const wrapper = _mount(
-      `<el-date-picker
+      `<el-date-picker-utc
         v-model="value"
         type="datetime"
         :default-time="defaultTime"
@@ -367,7 +367,7 @@ describe('Datetime Picker', () => {
 
   it('defaultTime only takes effect when time is not selected', async () => {
     const wrapper = _mount(
-      `<el-date-picker
+      `<el-date-picker-utc
         v-model="value"
         type="datetime"
         :default-time="defaultTime"
@@ -402,7 +402,7 @@ describe('Datetime Picker', () => {
 describe('Datetimerange', () => {
   it('select daterange and default Time and input format', async () => {
     const wrapper = _mount(
-      `<el-date-picker
+      `<el-date-picker-utc
         v-model="value"
         type="datetimerange"
         :default-time="new Date(2020, 1, 1, 1, 1, 1)"
@@ -465,7 +465,7 @@ describe('Datetimerange', () => {
 
   it('input date', async () => {
     const wrapper = _mount(
-      `<el-date-picker
+      `<el-date-picker-utc
         v-model="value"
         type="datetimerange"
     />`,
@@ -521,7 +521,7 @@ describe('Datetimerange', () => {
 
   it('select time', async () => {
     const wrapper = _mount(
-      `<el-date-picker
+      `<el-date-picker-utc
         v-model="value"
         type="datetimerange"
     />`,
@@ -557,7 +557,7 @@ describe('Datetimerange', () => {
 
   it('confirm honors disabledDate', async () => {
     const wrapper = _mount(
-      `<el-date-picker
+      `<el-date-picker-utc
         v-model="value"
         type="datetimerange"
         :disabledDate="disabledDate"
@@ -611,7 +611,7 @@ describe('Datetimerange', () => {
     ]
     const disabledHoursRightArr = [0, 1, 2]
     const wrapper = _mount(
-      `<el-date-picker
+      `<el-date-picker-utc
         v-model="value"
         type="datetimerange"
         :disabledHours="disabledHours"
@@ -675,7 +675,7 @@ describe('Datetimerange', () => {
   it('select same date, different time', async () => {
     const leftSelect = ['10', '59', '59']
     const wrapper = _mount(
-      `<el-date-picker
+      `<el-date-picker-utc
         v-model="value"
         type="datetimerange"
     />`,
@@ -760,7 +760,7 @@ describe('Datetimerange', () => {
     it('automatic id attachment', async () => {
       const wrapper = _mount(
         `<el-form-item label="Foobar" data-test-ref="item">
-          <el-date-picker type="datetime" />
+          <el-date-picker-utc type="datetime" />
         </el-form-item>`,
         () => ({})
       )
@@ -778,7 +778,7 @@ describe('Datetimerange', () => {
     it('specified id attachment', async () => {
       const wrapper = _mount(
         `<el-form-item label="Foobar" data-test-ref="item">
-          <el-date-picker type="datetime" id="foobar" />
+          <el-date-picker-utc type="datetime" id="foobar" />
         </el-form-item>`,
         () => ({})
       )
@@ -797,8 +797,8 @@ describe('Datetimerange', () => {
     it('form item role is group when multiple inputs', async () => {
       const wrapper = _mount(
         `<el-form-item label="Foobar" data-test-ref="item">
-          <el-date-picker type="datetime" />
-          <el-date-picker type="datetime" />
+          <el-date-picker-utc type="datetime" />
+          <el-date-picker-utc type="datetime" />
         </el-form-item>`,
         () => ({})
       )
@@ -812,7 +812,7 @@ describe('Datetimerange', () => {
   it('display value', async () => {
     const wrapper = _mount(
       `
-      <el-date-picker
+      <el-date-picker-utc
         v-model="value"
         type="datetimerange"
     />`,

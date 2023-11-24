@@ -30,7 +30,7 @@ dayjs.extend(isSameOrAfter)
 dayjs.extend(isSameOrBefore)
 
 export default defineComponent({
-  name: 'ElDatePickerUTC',
+  name: 'ElDatePickerUtc',
   install: null,
   props: {
     // FIXME: move this to date-picker.ts

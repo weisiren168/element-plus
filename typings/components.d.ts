@@ -32,7 +32,7 @@ declare module '@vue/runtime-core' {
     ElContainer: typeof import('../packages/element-plus')['ElContainer']
     ElConfigProvider: typeof import('../packages/element-plus')['ElConfigProvider']
     ElDatePicker: typeof import('../packages/element-plus')['ElDatePicker']
-    ElDatePickerUTC: typeof import('../packages/element-plus')['ElDatePickerUTC']
+    ElDatePickerUtc: typeof import('../packages/element-plus')['ElDatePickerUtc']
     ElDialog: typeof import('../packages/element-plus')['ElDialog']
     ElDivider: typeof import('../packages/element-plus')['ElDivider']
     ElDrawer: typeof import('../packages/element-plus')['ElDrawer']

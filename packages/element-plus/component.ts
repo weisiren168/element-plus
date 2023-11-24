@@ -33,6 +33,7 @@ import {
   ElMain,
 } from '@element-plus/components/container'
 import { ElDatePicker } from '@element-plus/components/date-picker'
+import { ElDatePickerUTC } from '@element-plus/components/date-picker-utc'
 import {
   ElDescriptions,
   ElDescriptionsItem,
@@ -134,6 +135,7 @@ export default [
   ElHeader,
   ElMain,
   ElDatePicker,
+  ElDatePickerUTC,
   ElDescriptions,
   ElDescriptionsItem,
   ElDialog,
